@@ -27,7 +27,13 @@ const RecipeCard = ({ recipe }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  const styles = {
+    media: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9,
+      marginTop:'30'
+    }
+};
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -35,10 +41,8 @@ const RecipeCard = ({ recipe }) => {
         subheader={recipe.date}
       />
       <CardMedia
-        component="img"
-        height="194"
-        image={recipe.image}
-        alt={recipe.title}
+        image={recipe.image} 
+        style={styles.media} 
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">

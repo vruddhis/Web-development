@@ -1,0 +1,26 @@
+{
+  "name": "webdev",
+  "version": "1.0.0",
+  "description": "hi",
+  "main": "index.js",
+  "scripts": {
+    "test": "abc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vruddhis/Web-development.git"
+  },
+  "keywords": [
+    "hello"
+  ],
+  "author": "vruddhi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vruddhis/Web-development/issues"
+  },
+  "homepage": "https://github.com/vruddhis/Web-development#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "jquery": "^3.7.1"
+  }
+}

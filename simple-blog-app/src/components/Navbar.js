@@ -1,83 +1,72 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import './NavBar.css';
+import React from 'react';
+// import Button from '@mui/material';
+// import Typography from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
-const useStyles = makeStyles((theme) => ({
-  navbar: {
-    backgroundColor: '#8BD3E6',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    margin:0,
-    marginBottom: theme.spacing(6),
-  },
-  title: {
-    fontFamily: 'cursive', 
-    marginRight: theme.spacing(46),
-    color: '#3f51b5',
-  },
-  signInButton: {
-    fontWeight: 'bold',
-    marginLeft: theme.spacing(38),
-  },
-  button: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: '#fff', 
-    backgroundColor: '#3f51b5', 
-    '&:hover': {
-      backgroundColor: '#303f9f', 
-    },
-  },
-}));
-
-const Navbar = ({ selectedCuisine, onCuisineChange }) => {
-  const classes = useStyles();
+const Navbar = ({ selectedCuisine, onCuisineChange, sort, onSortChange }) => {
 
   return (
-    <nav className={classes.navbar}>
-        <Typography variant="h6" className={classes.title}>
-        World of Recipes
-      </Typography>
-      <Button
-        className={classes.button}
-        variant={selectedCuisine === 'italian' ? 'contained' : 'text'}
+    <nav className="NavBar">
+      <div className='Left_buttons'>
+        <button
+        className="left_button"
+        variant={sort === 'likes' ? 'contained' : 'text'}
+        color="primary" onClick={() => onSortChange('likes')}>
+        Likes</button>
+        <button
+        className="left_button_comment"
+        variant={sort === 'comments' ? 'contained' : 'text'} 
+        color="primary" onClick={() => onSortChange('comments')}>
+            Comments
+        </button>
+
+      </div>
+      <div className='Right_buttons'>
+        <button
+        className="nav_button"
+        variant={selectedCuisine === 'all' ? 'contained' : 'text'}
         color="primary"
-        onClick={() => onCuisineChange('italian')}
+        onClick={() => onCuisineChange('all')}
       >
-        Italian
-      </Button>
-      <Button
-        className={classes.button}
-        variant={selectedCuisine === 'mexican' ? 'contained' : 'text'}
-        color="primary"
-        onClick={() => onCuisineChange('mexican')}
-      >
-        Mexican
-      </Button>
-      <Button
-        className={classes.button}
-        variant={selectedCuisine === 'indian' ? 'contained' : 'text'}
-        color="primary"
-        onClick={() => onCuisineChange('indian')}
-      >
-        Indian
-      </Button>
-      <Button
-        className={classes.button}
-        variant={selectedCuisine === 'thai' ? 'contained' : 'text'}
-        color="primary"
-        onClick={() => onCuisineChange('thai')}
-      >
-        Thai
-      </Button>
-      <Button className={classes.signInButton}>Sign In</Button>
+        All
+      </button>
+        <button
+          className="nav_button"
+          variant={selectedCuisine === 'italian' ? 'contained' : 'text'}
+          color="primary"
+          onClick={() => onCuisineChange('italian')}
+        >
+          Italian
+        </button>
+        <button
+          className="nav_button"
+          variant={selectedCuisine === 'mexican' ? 'contained' : 'text'}
+          color="primary"
+          onClick={() => onCuisineChange('mexican')}
+        >
+          Mexican
+        </button>
+        <button
+          className="nav_button"
+          variant={selectedCuisine === 'indian' ? 'contained' : 'text'}
+          color="primary"
+          onClick={() => onCuisineChange('indian')}
+        >
+          Indian
+        </button>
+        <button
+          className="nav_button"
+          variant={selectedCuisine === 'thai' ? 'contained' : 'text'}
+          color="primary"
+          onClick={() => onCuisineChange('thai')}
+        >
+          Thai
+        </button>
+        <Link to={`/`} ><button className="all_recipes">Go to Recipes</button></Link>
+
+      </div>
     </nav>
   );
 };

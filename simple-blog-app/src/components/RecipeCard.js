@@ -9,7 +9,8 @@ import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import './NavBar.css';
+import { Link } from 'react-router-dom';
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -34,8 +35,9 @@ const RecipeCard = ({ recipe }) => {
       marginTop:'30'
     }
 };
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ minHeight: 550, maxWidth:310, minWidth:310 }}>
       <CardHeader
         title={recipe.title}
         subheader={recipe.date}
@@ -48,6 +50,10 @@ const RecipeCard = ({ recipe }) => {
         <Typography variant="body2" color="text.secondary">
           {recipe.description}
         </Typography>
+        
+        <p className='LikesComments'><Link className='LikesComments' to={`/author/${recipe.authorId}`} >Author: {recipe.author}</Link><br></br>
+        Comments: {recipe.comments}<br></br>
+        Likes: {recipe.likes}</p>
       </CardContent>
       <CardActions disableSpacing>
         <ExpandMore

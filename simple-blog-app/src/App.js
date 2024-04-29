@@ -1,49 +1,18 @@
 
 import './App.css';
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ItalianRecipes from './components/ItalianRecipes.js';
-import Navbar from './components/Navbar.js';
-import IndianRecipes from './components/IndianRecipes.js';
-import MexicanRecipes from './components/MexicanRecipes.js';
-import ThaiRecipes from './components/ThaiRecipes.js';
-
-
-
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AuthorPage from './components/authors/authorPage.js';
+import AppPage from './AppPage.js';
 
 const App = () =>{
-const [selectedCuisine, setSelectedCuisine] = useState('italian');
-
-const handleCuisineChange = (cuisine) => {
-  setSelectedCuisine(cuisine); //we get this easily
-}; //this goes to navbar now
-
-let selectedRecipesComponent;
-switch (selectedCuisine) {
-  case 'italian':
-    selectedRecipesComponent = <ItalianRecipes />;
-    break;
-  case 'mexican':
-    selectedRecipesComponent = <MexicanRecipes />;
-    break;
-  case 'indian':
-    selectedRecipesComponent = <IndianRecipes />;
-    break;
-  case 'thai':
-    selectedRecipesComponent = <ThaiRecipes />;
-    break;
-  default:
-    selectedRecipesComponent = null;
-}
-
 return (
   <Router>
-  <div className="App">
-    <Navbar selectedCuisine={selectedCuisine} onCuisineChange={handleCuisineChange} />
+    <Routes>
+    <Route path = "/"element={<AppPage/>} ></Route>
+    <Route path="/author/:authorId" element={<AuthorPage/>} />
+  </Routes>
 
-    {selectedRecipesComponent}
-  </div>
   </Router>
 );
 
